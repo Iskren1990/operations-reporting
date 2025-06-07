@@ -1,0 +1,30 @@
+﻿using OperationsReporting.Models.Enums;
+using OperationsReporting.Common.Attributes;
+using OperationsReporting.Models.CsvMaps;
+
+namespace OperationsReporting.Models.DTO
+{
+    [CsvMap(typeof(TransactionExportDtoMap))]
+    public class TransactionExportDto
+    {
+        public int Id { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
+        public TransactionType TransactionType { get; set; }
+
+        public required decimal Amount { get; set; }
+
+        public required string Currency { get; set; }
+
+        public required string SenderIban { get; set; }
+
+        public required string ReceiverIban { get; set; }
+
+        public required TransactionStatus Status { get; set; }
+
+        public required string ExternalId { get; set; }
+
+        public int MerchantId { get; set; }
+    }
+}

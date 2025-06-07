@@ -1,0 +1,11 @@
+OperationsReporting.DAL/Migrations/
+
+# Should be ignored, but it is left for facilitation
+# Resources/ 
+
+bin/
+obj/
+
+*.user
+*.suo
+*.vs/

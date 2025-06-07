@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operation>
+    <FileDate>
+        2023-02-22
+    </FileDate>
+    <Transactions>
+        <Transaction>
+            <ExternalId>123213123123</ExternalId>
+            <CreateDate>2023-02-22T07:08:59.679Z</CreateDate>
+            <Amount>
+                <Direction>D</Direction>
+                <Value>111.11</Value>
+                <Currency>EUR</Currency>
+            </Amount>
+            <Status>1</Status>
+            <Debtor>
+                <BankName>ING BANK N.V.</BankName>
+                <BIC>INGBNL2A</BIC>
+                <IBAN>NL68INGB5831335380</IBAN>
+            </Debtor>
+            <Beneficiary>
+                <BankName>Bulgarian Bank</BankName>
+                <BIC>INGBNL2A</BIC>
+                <IBAN>BG83IORT80949736921315</IBAN>
+            </Beneficiary>
+        </Transaction>
+        <Transaction>
+            <ExternalId>123213234123</ExternalId>
+            <CreateDate>2023-02-22T07:07:44.123Z</CreateDate>
+            <Amount>
+                <Direction>C</Direction>
+                <Value>1231.13</Value>
+                <Currency>EUR</Currency>
+            </Amount>
+            <Status>0</Status>
+            <Debtor>
+                <BankName>ING BANK N.V.</BankName>
+                <BIC>INGBNL2A</BIC>
+                <IBAN>NL68INGB5831335380</IBAN>
+            </Debtor>
+            <Beneficiary>
+                <BankName>Bulgarian Bank</BankName>
+                <BIC>INBGNL1B</BIC>
+                <IBAN>BG90RZBB91552112199351</IBAN>
+            </Beneficiary>
+        </Transaction>
+    </Transactions>
+</Operation>
