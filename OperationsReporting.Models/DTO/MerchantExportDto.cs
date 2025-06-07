@@ -1,5 +1,9 @@
-﻿namespace OperationsReporting.Models.DTO
+﻿using OperationsReporting.Common.Attributes;
+using OperationsReporting.Common.CsvMappings;
+
+namespace OperationsReporting.Models.DTO
 {
+    [CsvMap(typeof(MerchantExportDtoMap))]
     public class MerchantExportDto
     {
         public int Id { get; set; }
