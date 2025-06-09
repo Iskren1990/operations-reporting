@@ -20,8 +20,6 @@ namespace OperationsReporting.Models.DTO
 
         public int PartnerId { get; set; }
 
-        public Partner Partner { get; set; } = null!;
-
-        public List<Transaction> Transactions { get; set; } = [];
+        public List<TransactionDto> Transactions { get; set; } = [];
     }
 }
