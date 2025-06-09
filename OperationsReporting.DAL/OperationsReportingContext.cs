@@ -31,7 +31,9 @@ namespace OperationsReporting.DAL
                 .HasForeignKey(t => t.MerchantId);
 
             modelBuilder.Entity<Transaction>()
-                .ToTable("transactions");
+                .ToTable("transactions")
+                .HasIndex(t => t.ExternalId)
+                .IsUnique();
 
             modelBuilder.Entity<Partner>().HasData(new Partner
             {
