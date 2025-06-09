@@ -5,6 +5,7 @@ using OperationsReporting.DAL;
 using OperationsReporting.Services.Mapping;
 using OperationsReporting.DAL.Interfaces;
 using OperationsReporting.DAL.Repositories;
+using OperationsReporting.WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,7 @@ builder.Services.AddScoped<IPartnerRepository, PartnerRepository>();
 builder.Services.AddScoped<IMerchantRepository, MerchantRepository>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -38,6 +40,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<GlobalErrorHandler>();
 
 app.UseHttpsRedirection();
 
