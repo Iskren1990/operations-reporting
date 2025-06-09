@@ -12,7 +12,7 @@ namespace OperationsReporting.WebApi.Controllers
 
         public MerchantController(IMerchantService merchantService)
         {
-            _merchantService = merchantService;
+            _merchantService = merchantService ?? throw new ArgumentNullException(nameof(merchantService));
         }
 
         [HttpGet]

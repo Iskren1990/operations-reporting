@@ -10,8 +10,8 @@ namespace OperationsReporting.WebApi.Middleware
 
         public GlobalErrorHandler(RequestDelegate next, ILogger<GlobalErrorHandler> logger)
         {
-            _next = next;
-            _logger = logger;
+            _next = next ?? throw new ArgumentNullException(nameof(next));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task Invoke(HttpContext context)

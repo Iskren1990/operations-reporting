@@ -12,7 +12,7 @@ namespace OperationsReporting.DAL.Repositories
 
         public TransactionRepository(OperationsReportingContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public async Task<List<Transaction>> GetAllAsync()

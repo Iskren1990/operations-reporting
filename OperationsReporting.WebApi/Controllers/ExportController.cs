@@ -12,7 +12,7 @@ namespace OperationsReporting.WebApi.Controllers
 
         public ExportController(IExportService exportService)
         {
-            _exportService = exportService;
+            _exportService = exportService ?? throw new ArgumentNullException(nameof(exportService  ));
         }
 
         [HttpGet("partners")]

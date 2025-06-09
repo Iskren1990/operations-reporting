@@ -12,8 +12,8 @@ namespace OperationsReporting.Services
 
         public MerchantService(IMerchantRepository merchantRepo, IMapper mapper)
         {
-            _merchantRepo = merchantRepo;
-            _mapper = mapper;
+            _merchantRepo = merchantRepo ?? throw new ArgumentNullException(nameof(merchantRepo));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         public async Task<PagedResult<MerchantDto>> GetMerchantsAsync(int page, int pageSize)

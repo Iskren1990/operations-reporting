@@ -4,6 +4,7 @@ using OperationsReporting.DAL;
 using OperationsReporting.DAL.Interfaces;
 using OperationsReporting.Models.DTO;
 using OperationsReporting.Models.Entities;
+using OperationsReporting.Models.Exceptions;
 using OperationsReporting.Models.Filters;
 using OperationsReporting.Services.Interfaces;
 using System.Xml.Serialization;
@@ -18,17 +19,22 @@ namespace OperationsReporting.Services
 
         public TransactionService(IMapper mapper, ITransactionRepository transactionRepo)
         {
-            _mapper = mapper;
-            _transactionRepo = transactionRepo;
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _transactionRepo = transactionRepo ?? throw new ArgumentNullException(nameof(transactionRepo));
         }
 
         public async Task<ImportResultDto<string>> ImportTransactionsFromXmlAsync(string xmlFilePath, int merchantId)
         {
-            XmlModels.Operation operation;
+            XmlModels.Operation? operation;
             var serializer = new XmlSerializer(typeof(XmlModels.Operation));
             using (var stream = File.OpenRead(xmlFilePath))
             {
-                operation = (XmlModels.Operation)serializer.Deserialize(stream);
+                operation = (XmlModels.Operation?)serializer.Deserialize(stream);
+            }
+
+            if (operation == null)
+            {
+                throw new XmlDeserializationException("Failed to deserialize XML to Operation object.");
             }
 
             var transactions = operation.Transactions.Select(tx =>

@@ -12,8 +12,8 @@ namespace OperationsReporting.Services
 
         public PartnerService(IPartnerRepository partnerRepo, IMapper mapper)
         {
-            _partnerRepo = partnerRepo;
-            _mapper = mapper;
+            _partnerRepo = partnerRepo ?? throw new ArgumentNullException(nameof(partnerRepo));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         public async Task<PagedResult<PartnerDto>> GetPartnersAsync(int page, int pageSize)

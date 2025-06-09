@@ -16,11 +16,11 @@ namespace OperationsReporting.Services
 
         public ExportService(IMapper mapper, IPartnerRepository partnerRepo, IMerchantRepository merchantRepo, ITransactionRepository transactionRepo)
         {
-            _mapper = mapper;
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 
-            _partnerRepo = partnerRepo;
-            _merchantRepo = merchantRepo;
-            _transactionRepo = transactionRepo;
+            _partnerRepo = partnerRepo ?? throw new ArgumentNullException(nameof(partnerRepo));
+            _merchantRepo = merchantRepo ?? throw new ArgumentNullException(nameof(merchantRepo));
+            _transactionRepo = transactionRepo ?? throw new ArgumentNullException(nameof(transactionRepo));
         }
 
         public async Task<string> ExportPartnersCsvAsync()

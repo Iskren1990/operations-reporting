@@ -11,7 +11,7 @@ namespace OperationsReporting.DAL.Repositories
 
         public PartnerRepository(OperationsReportingContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public async Task<List<Partner>> GetAllAsync()

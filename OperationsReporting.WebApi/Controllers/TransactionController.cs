@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OperationsReporting.Models.DTO;
+using OperationsReporting.Models.Exceptions;
 using OperationsReporting.Models.Filters;
 using OperationsReporting.Services.Interfaces;
 
@@ -13,7 +14,7 @@ namespace OperationsReporting.WebApi.Controllers
 
         public TransactionController(ITransactionService transactionService)
         {
-            _transactionService = transactionService;
+            _transactionService = transactionService ?? throw new ArgumentNullException(nameof(transactionService));
         }
 
         [HttpPost("{merchantId}")]
@@ -24,16 +25,33 @@ namespace OperationsReporting.WebApi.Controllers
 
             var tempFilePath = Path.GetRandomFileName();
 
-            using (var stream = System.IO.File.Create(tempFilePath))
+            try
             {
-                await file.CopyToAsync(stream);
+                using (var stream = System.IO.File.Create(tempFilePath))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                var result = await _transactionService.ImportTransactionsFromXmlAsync(tempFilePath, merchantId);
+
+                if (result == null)
+                    return BadRequest("Import failed or returned no result.");
+
+                return Ok(result);
             }
-
-            var result = await _transactionService.ImportTransactionsFromXmlAsync(tempFilePath, merchantId);
-
-            System.IO.File.Delete(tempFilePath);
-
-            return Ok(result);
+            catch (Exception ex) when (ex is System.Xml.XmlException || ex is XmlDeserializationException) 
+            {
+                return BadRequest("Invalid XML format or serialization error.");
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            finally
+            {
+                if (System.IO.File.Exists(tempFilePath))
+                    System.IO.File.Delete(tempFilePath);
+            }
         }
 
         [HttpGet]

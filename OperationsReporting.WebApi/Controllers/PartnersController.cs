@@ -12,7 +12,7 @@ namespace OperationsReporting.WebApi.Controllers
 
         public PartnersController(IPartnerService partnerService)
         {
-            _partnerService = partnerService;
+            _partnerService = partnerService ?? throw new ArgumentNullException(nameof(partnerService));
         }
 
         [HttpGet]
