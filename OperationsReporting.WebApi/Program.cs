@@ -22,6 +22,7 @@ builder.Services.AddAutoMapper(typeof(TransactionMappingProfile).Assembly);
 
 //services
 builder.Services.AddScoped<IMerchantService, MerchantService>();
+builder.Services.AddScoped<IPartnerService, PartnerService>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IExportService, ExportService>();
 
