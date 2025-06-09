@@ -5,7 +5,7 @@ using System.Text;
 namespace OperationsReporting.WebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/exports")]
     public class ExportController : ControllerBase
     {
         private readonly IExportService _exportService;

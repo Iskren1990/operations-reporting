@@ -6,7 +6,7 @@ using OperationsReporting.Services.Interfaces;
 namespace OperationsReporting.WebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/transactions")]
     public class TransactionController : ControllerBase
     {
         private readonly ITransactionService _transactionService;

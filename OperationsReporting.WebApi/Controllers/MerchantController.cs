@@ -5,7 +5,7 @@ using OperationsReporting.Services.Interfaces;
 namespace OperationsReporting.WebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/merchants")]
     public class MerchantController : ControllerBase
     {
         private readonly IMerchantService _merchantService;

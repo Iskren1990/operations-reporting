@@ -5,7 +5,7 @@ using OperationsReporting.Services.Interfaces;
 namespace OperationsReporting.WebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/partners")]
     public class PartnersController : ControllerBase
     {
         private readonly IPartnerService _partnerService;
