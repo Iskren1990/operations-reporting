@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using OperationsReporting.DAL;
 using OperationsReporting.DAL.Interfaces;
 using OperationsReporting.Models.DTO;
 using OperationsReporting.Models.Entities;
