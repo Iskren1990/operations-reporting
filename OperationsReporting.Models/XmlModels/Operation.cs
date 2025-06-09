@@ -9,6 +9,6 @@ namespace OperationsReporting.Models.XmlModels
 
         [XmlArray("Transactions")]
         [XmlArrayItem("Transaction")]
-        public List<XmlModels.Transaction> Transactions { get; set; } = new();
+        public List<Transaction> Transactions { get; set; } = new();
     }
 }

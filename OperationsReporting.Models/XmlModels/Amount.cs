@@ -2,9 +2,9 @@
 {
     public class Amount
     {
-        public required string Direction { get; set; } // "D" or "C"
+        public required string Direction { get; set; }
 
-        public decimal Value { get; set; }
+        public required decimal Value { get; set; }
 
         public required string Currency { get; set; }
     }

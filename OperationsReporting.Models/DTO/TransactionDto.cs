@@ -4,7 +4,7 @@ namespace OperationsReporting.Models.DTO
 {
     public class TransactionDto
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         
         public DateTime DateCreated { get; set; }
         

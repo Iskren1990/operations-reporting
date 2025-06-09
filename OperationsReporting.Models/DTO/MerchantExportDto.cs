@@ -6,7 +6,7 @@ namespace OperationsReporting.Models.DTO
     [CsvMap(typeof(MerchantExportDtoMap))]
     public class MerchantExportDto
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public required string Name { get; set; }
 
@@ -20,6 +20,6 @@ namespace OperationsReporting.Models.DTO
 
         public string? AddressSecondary { get; set; }
 
-        public int PartnerId { get; set; }
+        public long PartnerId { get; set; }
     }
 }

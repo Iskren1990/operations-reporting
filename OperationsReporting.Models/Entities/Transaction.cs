@@ -4,7 +4,7 @@ namespace OperationsReporting.Models.Entities
 {
     public class Transaction
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public DateTime DateCreated { get; set; }
 
@@ -22,7 +22,7 @@ namespace OperationsReporting.Models.Entities
 
         public required string ExternalId { get; set; }
 
-        public int MerchantId { get; set; }
+        public long MerchantId { get; set; }
 
         public required Merchant Merchant { get; set; }
     }

@@ -7,7 +7,7 @@ namespace OperationsReporting.Models.DTO
     [CsvMap(typeof(TransactionExportDtoMap))]
     public class TransactionExportDto
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public DateTime DateCreated { get; set; }
 
@@ -25,6 +25,6 @@ namespace OperationsReporting.Models.DTO
 
         public required string ExternalId { get; set; }
 
-        public int MerchantId { get; set; }
+        public long MerchantId { get; set; }
     }
 }

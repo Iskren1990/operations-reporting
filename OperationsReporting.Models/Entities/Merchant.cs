@@ -2,7 +2,7 @@
 {
     public class Merchant
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public required string Name { get; set; }
 
@@ -16,7 +16,7 @@
 
         public string? AddressSecondary { get; set; }
 
-        public int PartnerId { get; set; }
+        public long PartnerId { get; set; }
 
         public Partner Partner { get; set; } = null!;
 
