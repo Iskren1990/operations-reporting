@@ -9,6 +9,7 @@ namespace OperationsReporting.Services.Mapping
         public PartnerMappingProfile()
         {
             CreateMap<Partner, PartnerExportDto>();
+            CreateMap<Partner, PartnerDto>();
         }
     }
 }
