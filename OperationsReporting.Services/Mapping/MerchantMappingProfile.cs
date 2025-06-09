@@ -9,6 +9,7 @@ namespace OperationsReporting.Services.Mapping
         public MerchantMappingProfile()
         {
             CreateMap<Merchant, MerchantExportDto>();
+            CreateMap<Merchant, MerchantDto>();
         }
     }
 }
