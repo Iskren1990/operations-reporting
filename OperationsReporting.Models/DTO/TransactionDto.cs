@@ -14,11 +14,11 @@ namespace OperationsReporting.Models.DTO
         
         public required string Currency { get; set; }
         
-        public required string DebtorIban { get; set; }
+        public required string SenderIban { get; set; }
         
-        public required string BeneficiaryIban { get; set; }
+        public required string ReceiverIban { get; set; }
         
-        public required bool Status { get; set; }
+        public required TransactionStatus Status { get; set; }
         
         public required string ExternalId { get; set; }
     }

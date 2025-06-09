@@ -21,7 +21,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(TransactionMappingProfile).Assembly);
 
 //services
-builder.Services.AddScoped<ITransactionImportService, TransactionImportService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IExportService, ExportService>();
 
 // repositories

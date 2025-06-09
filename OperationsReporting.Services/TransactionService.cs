@@ -1,22 +1,25 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using OperationsReporting.DAL;
+using OperationsReporting.DAL.Interfaces;
+using OperationsReporting.Models.DTO;
 using OperationsReporting.Models.Entities;
+using OperationsReporting.Models.Filters;
 using OperationsReporting.Services.Interfaces;
 using System.Xml.Serialization;
 using XmlModels = OperationsReporting.Models.XmlModels;
 
 namespace OperationsReporting.Services
 {
-    public class TransactionImportService : ITransactionImportService
+    public class TransactionService : ITransactionService
     {
-        private readonly OperationsReportingContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly ITransactionRepository _transactionRepo;
 
-        public TransactionImportService(OperationsReportingContext dbContext, IMapper mapper)
+        public TransactionService(IMapper mapper, ITransactionRepository transactionRepo)
         {
-            _dbContext = dbContext;
             _mapper = mapper;
+            _transactionRepo = transactionRepo;
         }
 
         public async Task ImportTransactionsFromXmlAsync(string xmlFilePath, int merchantId)
@@ -35,16 +38,22 @@ namespace OperationsReporting.Services
                 return entity;
             }).ToList();
 
-            foreach (var transaction in transactions)
-            {
-                bool exists = await _dbContext.Transactions.AnyAsync(t => t.ExternalId == transaction.ExternalId);
-                if (!exists)
-                {
-                    _dbContext.Transactions.Add(transaction);
-                }
-            }
+            await _transactionRepo.BulkInsertIfNotExistsAsync(transactions);
+        }
 
-            await _dbContext.SaveChangesAsync();
+        public async Task<PagedResult<TransactionDto>> GetTransactionsAsync(TransactionFilter filter, int page, int pageSize)
+        {
+            var (transactions, totalCount) = await _transactionRepo.GetFilteredTransactionsAsync(filter, page, pageSize);
+
+            var dtos = _mapper.Map<List<TransactionDto>>(transactions);
+
+            return new PagedResult<TransactionDto>
+            {
+                Page = page,
+                PageSize = pageSize,
+                TotalCount = totalCount,
+                Items = dtos
+            };
         }
     }
 }

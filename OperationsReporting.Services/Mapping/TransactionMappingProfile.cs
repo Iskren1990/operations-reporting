@@ -26,6 +26,7 @@ namespace OperationsReporting.Services.Mapping
                 .ForMember(dest => dest.Merchant, opt => opt.Ignore());
 
             CreateMap<Transaction, TransactionExportDto>();
+            CreateMap<Transaction, TransactionDto>();
         }
     }
 }

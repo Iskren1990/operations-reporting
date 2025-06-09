@@ -34,7 +34,47 @@
             </Amount>
             <Status>0</Status>
             <Debtor>
+                <BankName>TIME BANK N.V.</BankName>
+                <BIC>INGBNL2A</BIC>
+                <IBAN>NL68INGB5831335380</IBAN>
+            </Debtor>
+            <Beneficiary>
+                <BankName>Bulgarian Bank</BankName>
+                <BIC>INBGNL1B</BIC>
+                <IBAN>BG90RZBB91552112199351</IBAN>
+            </Beneficiary>
+        </Transaction>
+        <Transaction>
+            <ExternalId>123213234124</ExternalId>
+            <CreateDate>2024-02-22T07:07:44.123Z</CreateDate>
+            <Amount>
+                <Direction>C</Direction>
+                <Value>1231.13</Value>
+                <Currency>EUR</Currency>
+            </Amount>
+            <Status>0</Status>
+            <Debtor>
                 <BankName>ING BANK N.V.</BankName>
+                <BIC>INGBNL2A</BIC>
+                <IBAN>NL68INGB5831335380</IBAN>
+            </Debtor>
+            <Beneficiary>
+                <BankName>Bulgarian Bank</BankName>
+                <BIC>INBGNL1B</BIC>
+                <IBAN>BG90RZBB91552112199351</IBAN>
+            </Beneficiary>
+        </Transaction>
+        <Transaction>
+            <ExternalId>123213234125</ExternalId>
+            <CreateDate>2023-02-22T07:07:44.123Z</CreateDate>
+            <Amount>
+                <Direction>C</Direction>
+                <Value>10000000</Value>
+                <Currency>EUR</Currency>
+            </Amount>
+            <Status>0</Status>
+            <Debtor>
+                <BankName>AMOUNT BANK N.V.</BankName>
                 <BIC>INGBNL2A</BIC>
                 <IBAN>NL68INGB5831335380</IBAN>
             </Debtor>

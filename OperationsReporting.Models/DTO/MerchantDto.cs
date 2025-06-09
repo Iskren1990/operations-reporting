@@ -1,4 +1,6 @@
-﻿namespace OperationsReporting.Models.DTO
+﻿using OperationsReporting.Models.Entities;
+
+namespace OperationsReporting.Models.DTO
 {
     public class MerchantDto
     {
@@ -15,5 +17,11 @@
         public required string AddressMain { get; set; }
         
         public string? AddressSecondary { get; set; }
+
+        public int PartnerId { get; set; }
+
+        public Partner Partner { get; set; } = null!;
+
+        public List<Transaction> Transactions { get; set; } = [];
     }
 }
