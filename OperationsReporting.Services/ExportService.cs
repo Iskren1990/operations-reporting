@@ -2,7 +2,6 @@
 using OperationsReporting.Common.Utils;
 using OperationsReporting.DAL.Interfaces;
 using OperationsReporting.Models.DTO;
-using OperationsReporting.Models.Entities;
 using OperationsReporting.Services.Interfaces;
 
 namespace OperationsReporting.Services
