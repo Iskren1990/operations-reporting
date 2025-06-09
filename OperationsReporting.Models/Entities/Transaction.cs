@@ -24,6 +24,6 @@ namespace OperationsReporting.Models.Entities
 
         public int MerchantId { get; set; }
 
-        public required Merchant Merchant { get; set; };
+        public required Merchant Merchant { get; set; }
     }
 }
