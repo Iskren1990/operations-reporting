@@ -29,11 +29,11 @@ namespace OperationsReporting.WebApi.Controllers
                 await file.CopyToAsync(stream);
             }
 
-            await _transactionService.ImportTransactionsFromXmlAsync(tempFilePath, merchantId);
+            var result = await _transactionService.ImportTransactionsFromXmlAsync(tempFilePath, merchantId);
 
             System.IO.File.Delete(tempFilePath);
 
-            return Ok("Transactions imported successfully.");
+            return Ok(result);
         }
 
         [HttpGet]

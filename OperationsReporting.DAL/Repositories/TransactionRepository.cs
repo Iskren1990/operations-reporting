@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OperationsReporting.DAL.Interfaces;
+using OperationsReporting.Models.DTO;
 using OperationsReporting.Models.Entities;
 using OperationsReporting.Models.Filters;
 
@@ -19,21 +20,18 @@ namespace OperationsReporting.DAL.Repositories
             return await _context.Transactions.ToListAsync();
         }
 
-        public async Task BulkInsertIfNotExistsAsync(List<Transaction> transactions)
+        public async Task<ImportResultDto<string>> BulkInsertIfNotExistsAsync(List<Transaction> transactions)
         {
             if (transactions == null || transactions.Count == 0)
-                return;
+                return new ImportResultDto<string> { Total = 0, Inserted = 0, SkippedIds = [] };
 
-            // Get all ExternalIds from the incoming list
             var externalIds = transactions.Select(t => t.ExternalId).ToList();
 
-            // Query only existing ExternalIds in the database in a single query
             var existingIds = await _context.Transactions
                 .Where(t => externalIds.Contains(t.ExternalId))
                 .Select(t => t.ExternalId)
                 .ToListAsync();
 
-            // Filter out transactions that already exist
             var newTransactions = transactions
                 .Where(t => !existingIds.Contains(t.ExternalId))
                 .ToList();
@@ -43,6 +41,18 @@ namespace OperationsReporting.DAL.Repositories
                 await _context.Transactions.AddRangeAsync(newTransactions);
                 await _context.SaveChangesAsync();
             }
+
+            var notInsertedIds = transactions
+                .Where(t => existingIds.Contains(t.ExternalId))
+                .Select(t => t.ExternalId)
+                .ToList();
+
+            return new ImportResultDto<string>
+            {
+                Total = transactions.Count,
+                Inserted = newTransactions.Count,
+                SkippedIds = notInsertedIds
+            };
         }
 
         public async Task<(List<Transaction> Transactions, int TotalCount)> GetFilteredTransactionsAsync(TransactionFilter filter, int page, int pageSize)

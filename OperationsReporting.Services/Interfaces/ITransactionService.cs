@@ -5,7 +5,7 @@ namespace OperationsReporting.Services.Interfaces
 {
     public interface ITransactionService
     {
-        Task ImportTransactionsFromXmlAsync(string xmlFilePath, int merchantId);
+        Task<ImportResultDto<string>> ImportTransactionsFromXmlAsync(string xmlFilePath, int merchantId);
 
         Task<PagedResult<TransactionDto>> GetTransactionsAsync(TransactionFilter filter, int page, int pageSize);
     }

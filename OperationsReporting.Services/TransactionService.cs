@@ -22,7 +22,7 @@ namespace OperationsReporting.Services
             _transactionRepo = transactionRepo;
         }
 
-        public async Task ImportTransactionsFromXmlAsync(string xmlFilePath, int merchantId)
+        public async Task<ImportResultDto<string>> ImportTransactionsFromXmlAsync(string xmlFilePath, int merchantId)
         {
             XmlModels.Operation operation;
             var serializer = new XmlSerializer(typeof(XmlModels.Operation));
@@ -38,7 +38,7 @@ namespace OperationsReporting.Services
                 return entity;
             }).ToList();
 
-            await _transactionRepo.BulkInsertIfNotExistsAsync(transactions);
+            return await _transactionRepo.BulkInsertIfNotExistsAsync(transactions);
         }
 
         public async Task<PagedResult<TransactionDto>> GetTransactionsAsync(TransactionFilter filter, int page, int pageSize)
