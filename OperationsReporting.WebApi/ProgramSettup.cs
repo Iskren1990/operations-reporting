@@ -15,7 +15,7 @@ namespace OperationsReporting.WebApi
         public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
         {
             builder.Services.AddDbContext<OperationsReportingContext>(options =>
-                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")).UseSnakeCaseNamingConvention());
 
             builder.Services.AddControllers();
 
