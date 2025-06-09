@@ -11,7 +11,7 @@ namespace OperationsReporting.Models.XmlModels
 
         public required Amount Amount { get; set; }
 
-        public int Status { get; set; }  // 1 or 0
+        public int Status { get; set; }
 
         public required Party Debtor { get; set; }
 

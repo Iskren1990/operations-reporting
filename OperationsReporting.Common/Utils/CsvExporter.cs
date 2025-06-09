@@ -18,7 +18,6 @@ namespace OperationsReporting.Common.Utils
 
             using var csv = new CsvWriter(writer, config);
 
-            // Check if T has CsvMapAttribute and register the map if found
             var mapAttribute = typeof(T).GetCustomAttributes(typeof(CsvMapAttribute), false)
                 .FirstOrDefault() as CsvMapAttribute;
 

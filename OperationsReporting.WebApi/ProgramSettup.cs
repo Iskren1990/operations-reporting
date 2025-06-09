@@ -25,7 +25,7 @@ namespace OperationsReporting.WebApi
             // AutoMapper
             builder.Services.AddAutoMapper(typeof(TransactionMappingProfile).Assembly);
 
-            //services
+            // services
             builder.Services.AddScoped<IMerchantService, MerchantService>();
             builder.Services.AddScoped<IPartnerService, PartnerService>();
             builder.Services.AddScoped<ITransactionService, TransactionService>();
