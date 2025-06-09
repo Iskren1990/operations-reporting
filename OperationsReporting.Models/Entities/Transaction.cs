@@ -31,6 +31,7 @@ namespace OperationsReporting.Models.Entities
         [Required]
         public required string ExternalId { get; set; }
 
+        [Required]
         public long MerchantId { get; set; }
 
         public required Merchant Merchant { get; set; }
