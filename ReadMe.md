@@ -25,6 +25,9 @@ dotnet ef migrations add InitialCreate --project ./OperationsReporting.DAL --sta
 dotnet ef database update --project ./OperationsReporting.DAL --startup-project ./OperationsReporting.WebApi
 ```
 
+## Start the Web API
+
+Once started the Web API will be available at `https://localhost:7116/swagger/index.html`.
 
 ## Preseeded data
 
