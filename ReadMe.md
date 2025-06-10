@@ -43,7 +43,7 @@ There is some preseeded data:
   1 | Test Partner
 
 
-To insert additional change OperationsReportingContext.OnModelCreating or log in to the PostgreSQL container:
+To insert additional change InitialDataSeed.cs or log in to the PostgreSQL container:
 ```bash
 docker exec -it my-postgres psql -U postgres
 ```
